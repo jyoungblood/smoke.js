@@ -4,7 +4,7 @@ var smoke = {
 	pageload: function(){
     window.addEventListener('load', function(){
     	smoke.bodyload();
-    });
+    }, false);
 	},
 	
 	bodyload: function(){
@@ -63,7 +63,7 @@ var smoke = {
 		
 		// close on background click
 		var g = document.getElementById('smoke-bg');
-				g.addEventListener("click",smoke.destroy);
+				g.addEventListener("click",smoke.destroy, false);
 
 		// call destruction...whatever, i'm tired
 		var destroy = function(){
@@ -78,7 +78,7 @@ var smoke = {
 		if (f.type == 'alert'){
 			// return true
 			var h = document.getElementById('alert-ok');
-					h.addEventListener("click",destroy);		
+					h.addEventListener("click",destroy, false);		
 		}
 		
 		if (f.type == 'confirm'){
@@ -87,14 +87,14 @@ var smoke = {
 					h.addEventListener("click",function(){
 								smoke.destroy(f.type);
 								f.callback(false);
-					});
+					}, false);
 			
 			// return true
 			var i = document.getElementById('confirm-ok');
 					i.addEventListener("click",function(){
 								smoke.destroy(f.type);
 								f.callback(true);
-					});
+					}, false);
 		}
 		
 		if (f.type == 'prompt'){
@@ -103,7 +103,7 @@ var smoke = {
 					h.addEventListener("click",function(){
 								smoke.destroy(f.type);
 								f.callback(false);
-					});
+					}, false);
 
 			// return	contents of input box
 			var j = document.getElementById('dialog-input');
@@ -111,7 +111,7 @@ var smoke = {
 					i.addEventListener("click",function(){
 								smoke.destroy(f.type);
 								f.callback(j.value);
-					});
+					}, false);
 		}
 
 
@@ -128,12 +128,12 @@ var smoke = {
 				box.setAttribute('class','smoke-base');
 
 			if (g = document.getElementById(type+'-ok')){
-				g.removeEventListener("click");
+				g.removeEventListener("click", function(){}, false);
 			}
 			
 			if (h = document.getElementById(type+'-cancel')){
 
-				h.removeEventListener("click");
+				h.removeEventListener("click", function(){}, false);
 			}
 	},
 

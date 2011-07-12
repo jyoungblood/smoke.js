@@ -13,6 +13,24 @@ var smoke = {
 				ff.setAttribute('class','smoke-base');
 				document.body.appendChild(ff);
 	},
+	
+	force: function(type,content){
+  	smoke.bodyload();
+		
+		// derp whatever
+		if (type == 'alert'){
+			smoke.alert(content);
+		}
+		if (type == 'signal'){
+			smoke.signal(content);
+		}
+		if (type == 'confirm'){
+			smoke.confirm(content);
+		}
+		if (type == 'prompt'){
+			smoke.prompt(content);
+		}
+	},
 
 	build: function(e,f){
 		var prompt = '';
@@ -187,17 +205,15 @@ smoke.pageload();
 
 // fixit
 
-	// destroy needs to remove event listeners (or don't write new ones if there already are ones)
 
 
 // future
 	// finish prompt functionality: prompt input submit on enter
 		// return '' instad of false
 
-	// autofocus "ok" on all
-	
+	// maybe ie (8-) support (event handlers, mostly)
+
 	// custom prefs
 		// custom true/false button text options
 		// decide what to autofocus on
 
-	// maybe ie (8-) support (event handlers, mostly)

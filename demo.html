@@ -6,7 +6,7 @@
 
 	<!-- include these -->
 	<link rel="stylesheet" href="smoke/smoke.css" type="text/css" media="screen" />  
-	<script src="smoke/smoke.min.js" type="text/javascript"></script>
+	<script src="smoke/smoke.js" type="text/javascript"></script>
 	
 	<!-- you only need this if you want to include a theme...duh -->
 	<link id="theme" rel="stylesheet" href="smoke/themes/default.css" type="text/css" media="screen" />
@@ -18,7 +18,10 @@
 
 	<script>
 	
-		$(function(){
+		$(function(){	
+
+smoke.force('alert','text goes here');
+
 			$("#shortthemes a").click(function(e){
 				e.preventDefault();
 				$("link#theme").attr('href',$(this).attr('href'));

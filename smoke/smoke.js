@@ -14,22 +14,8 @@ var smoke = {
 				document.body.appendChild(ff);
 	},
 	
-	force: function(type,content){
+	forceload: function(){
   	smoke.bodyload();
-		
-		// derp whatever
-		if (type == 'alert'){
-			smoke.alert(content);
-		}
-		if (type == 'signal'){
-			smoke.signal(content);
-		}
-		if (type == 'confirm'){
-			smoke.confirm(content);
-		}
-		if (type == 'prompt'){
-			smoke.prompt(content);
-		}
 	},
 
 	build: function(e,f){

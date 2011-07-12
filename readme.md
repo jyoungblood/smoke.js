@@ -11,11 +11,11 @@ Supported Browsers
 - Firefox
 - Safari
 - IE 9+ (usable, no animation)
+- iOS Mobile Safari
 
 
 Currently Broken (but hopefully not for long)
 ---------------------------------------------
-- iOS Mobile Safari
 - IE 7/8
 
 (untested in other mobile browsers)

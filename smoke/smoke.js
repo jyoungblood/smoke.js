@@ -75,7 +75,14 @@ var smoke = {
 		if (f.type == 'alert'){
 			// return true
 			var h = document.getElementById('alert-ok');
-					h.addEventListener("click",destroy, false);		
+					h.addEventListener("click",destroy, false);
+
+			// listen for enter key or space, close it
+			document.onkeyup = function(e){
+				if (e.keyCode == 13 || e.keyCode == 32){
+					smoke.destroy(f.type);
+				}
+			};
 		}
 		
 		if (f.type == 'confirm'){
@@ -86,12 +93,22 @@ var smoke = {
 								f.callback(false);
 					}, false);
 			
+			
 			// return true
 			var i = document.getElementById('confirm-ok');
 					i.addEventListener("click",function(){
 								smoke.destroy(f.type);
 								f.callback(true);
 					}, false);
+					
+			// listen for enter key or space, close it & return true
+			document.onkeyup = function(e){
+				if (e.keyCode == 13 || e.keyCode == 32){
+					smoke.destroy(f.type);
+					f.callback(true);
+				}
+			};
+
 		}
 		
 		if (f.type == 'prompt'){
@@ -124,10 +141,16 @@ var smoke = {
 		var box = document.getElementById('smoke-out');
 				box.setAttribute('class','smoke-base');
 
+			
+			// confirm/alert/prompt remove click listener
 			if (g = document.getElementById(type+'-ok')){
 				g.removeEventListener("click", function(){}, false);
+				
+				// remove keyup listener
+				document.onkeyup = null;
 			}
 			
+			// confirm/prompt remove click listener
 			if (h = document.getElementById(type+'-cancel')){
 
 				h.removeEventListener("click", function(){}, false);

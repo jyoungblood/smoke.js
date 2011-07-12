@@ -11,11 +11,10 @@ var smoke = {
 		var ff = document.createElement('div');
 				ff.setAttribute('id','smoke-out');
 				ff.setAttribute('class','smoke-base');
-				document.body.appendChild(ff);	
+				document.body.appendChild(ff);
 	},
 
 	build: function(e,f){
-	
 		var prompt = '';
 		if (f.type == 'prompt'){
 			prompt = 
@@ -51,7 +50,6 @@ var smoke = {
 			'</div>'+
 		'</div>';
 
-
 		var ff = document.getElementById('smoke-out');
 				ff.innerHTML = box;
 				ff.className = 'smoke-base smoke-visible';
@@ -69,7 +67,6 @@ var smoke = {
 		var destroy = function(){
 			smoke.destroy(f.type);
 		};
-
 
 
 

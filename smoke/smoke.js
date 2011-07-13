@@ -65,12 +65,14 @@ var smoke = {
 		
 		// close on background click
 		var g = document.getElementById('smoke-bg');
-				g.addEventListener("click",smoke.destroy, false);
+				g.addEventListener("click",function(){
+					smoke.destroy(f.type);
+					if (f.type == 'prompt' || f.type == 'confirm'){
+						f.callback(false);
+					}
+				}, false);
 
-		// call destruction...whatever, i'm tired
-		var destroy = function(){
-			smoke.destroy(f.type);
-		};
+
 
 
 
@@ -79,7 +81,9 @@ var smoke = {
 		if (f.type == 'alert'){
 			// return true
 			var h = document.getElementById('alert-ok');
-					h.addEventListener("click",destroy, false);
+					h.addEventListener("click",function(){
+						smoke.destroy(f.type);
+					}, false);
 
 			// listen for enter key or space, close it
 			document.onkeyup = function(e){
@@ -130,13 +134,23 @@ var smoke = {
 								smoke.destroy(f.type);
 								f.callback(j.value);
 					}, false);
+					
+			// listen for enter
+			document.onkeyup = function(e){
+				if (e.keyCode == 13){
+					smoke.destroy(f.type);
+					f.callback(j.value);
+				}
+			};
 		}
 
 
 
 		// close after f.timeout ms
 		if (f.type == 'signal'){
-			smoketimeout = setTimeout(destroy,f.timeout);
+			smoketimeout = setTimeout(function(){
+				smoke.destroy(f.type);
+			},f.timeout);
 		}
 		
 	},
@@ -189,15 +203,11 @@ smoke.pageload();
 
 
 
-// fixit
-
-
-
 // future
-	// finish prompt functionality: prompt input submit on enter
-		// return '' instad of false
 
-	// maybe ie (8-) support (event handlers, mostly)
+	// maybe ie (8-) support (event handlers, cat monocles)
+
+	// smoke.forceload() --> make it more robust (cancel the load event listener, etc)
 
 	// custom prefs
 		// custom true/false button text options

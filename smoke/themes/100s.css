@@ -41,3 +41,12 @@ button.cancel {
 	background-color: #999; 
 	color:#222
 }
+
+.dialog-prompt{
+	margin-top:0;
+}
+.dialog-prompt input{
+	width:300px;
+	text-align:center;
+	background-color:#ccc;
+}

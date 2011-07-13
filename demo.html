@@ -37,6 +37,17 @@
 				}
 			});
 		}
+		
+		function tstprompt(){
+			smoke.prompt('what\'s my name?',function(e){
+				if (e){
+					alert('my name is '+e);
+				}else{
+					alert('no');
+				}
+			});
+		}		
+
 
 	</script>
 
@@ -52,7 +63,8 @@
 		<div id="demo">
 			<a onClick="javascript:smoke.alert('this is a normal alert');">smoke.alert('this is a normal alert');</a>
 			<a onClick="javascript:smoke.signal('this goes away after a sec');">smoke.signal('this goes away after a sec');</a>
-			<a onClick="javascript:tstconfirm();">smoke.confirm('use like a normal confirm?');</a>
+			<a onClick="javascript:tstconfirm();">smoke.confirm('behaves like a normal confirm?');</a>
+			<a onClick="javascript:tstprompt();">smoke.prompt('behaves like a normal prompt?');</a>
 		</div>
 
 
@@ -60,7 +72,7 @@
 		<hr />
 
 
-		<p>You can implement all of these the same way you'd use the js alert()...just put "smoke." in front of it.</p>
+		<p>You can implement these the same way you'd use the js alert()...just put "smoke." in front of it.</p>
 
 		<p>The confirm() replacement, however, needs to be used just a little differently:</p>
 		
@@ -72,6 +84,15 @@
 	}
 });</pre>
 
+		<p>prompt(), similarly:</p>
+
+		<pre>smoke.prompt('what\'s my name?',function(e){
+	if (e){
+		alert('my name is '+e);
+	}else{
+		alert('no');
+	}
+});</pre>
 
 
 		<hr />

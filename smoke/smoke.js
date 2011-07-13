@@ -8,10 +8,12 @@ var smoke = {
 	},
 	
 	bodyload: function(){
-		var ff = document.createElement('div');
-				ff.setAttribute('id','smoke-out');
-				ff.setAttribute('class','smoke-base');
-				document.body.appendChild(ff);
+		if (!document.getElementById('smoke-out')){
+			var ff = document.createElement('div');
+					ff.setAttribute('id','smoke-out');
+					ff.setAttribute('class','smoke-base');
+					document.body.appendChild(ff);
+		}
 	},
 	
 	forceload: function(){
@@ -120,6 +122,9 @@ var smoke = {
 		}
 		
 		if (f.type == 'prompt'){
+			// focus on input
+			document.getElementById('dialog-input').focus();
+
 			// return false
 			var h = document.getElementById('prompt-cancel');
 					h.addEventListener("click",function(){
@@ -207,9 +212,6 @@ smoke.pageload();
 
 	// maybe ie (8-) support (event handlers, cat monocles)
 
-	// smoke.forceload() --> make it more robust (cancel the load event listener, etc)
-
 	// custom prefs
 		// custom true/false button text options
-		// decide what to autofocus on
 

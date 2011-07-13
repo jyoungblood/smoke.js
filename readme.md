@@ -18,4 +18,4 @@ Currently Broken (but hopefully not for long)
 ---------------------------------------------
 - IE 7/8
 
-(untested in other mobile browsers)
+(widespread mobile support [android, blackberry, windows] uncertain)

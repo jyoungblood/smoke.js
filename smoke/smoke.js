@@ -21,6 +21,8 @@ var smoke = {
 	},
 
 	build: function(e,f){
+		e = e.replace(/\n/g,'<br />');
+		e = e.replace(/\r/g,'<br />');
 		var prompt = '';
 		if (f.type == 'prompt'){
 			prompt = 
@@ -123,7 +125,12 @@ var smoke = {
 		
 		if (f.type == 'prompt'){
 			// focus on input
-			document.getElementById('dialog-input').focus();
+			var pi = document.getElementById('dialog-input');
+				
+				setTimeout(function(){
+					pi.focus();
+					pi.select();
+				},100);
 
 			// return false
 			var h = document.getElementById('prompt-cancel');

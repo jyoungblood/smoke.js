@@ -18,11 +18,6 @@ Supported Browsers
 (widespread mobile support [android, blackberry, windows] uncertain)
 
 
-Halfway Supported Browsers
---------------------------
-- IE 6/7 [almost working...whatevs]
-
-
 
 
 

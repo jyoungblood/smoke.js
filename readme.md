@@ -12,7 +12,7 @@ Supported Browsers
 - Chrome
 - Firefox
 - Safari
-- IE 8+ (usable, no animation [whatevs])
+- IE 6+ (usable, no animation [whatevs], visual IE6 support [transparencies, etc] is up to you)
 - iOS Mobile Safari
 
 (widespread mobile support [android, blackberry, windows] uncertain)
@@ -60,6 +60,5 @@ Current User Notices
 
 Planned Updates
 ---------------
--IE 7 listeners not working or the script is stopping somewhere
+-Logic to support stacking alert (and possibly signal) dialogs better (show in the right order, one at a time)
 -Get webkit outbound transitions working properly again
--Logic to support stacking alert/signal dialogs better

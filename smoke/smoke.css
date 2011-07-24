@@ -5,7 +5,6 @@
   bottom: 0;
   right: 0;
   visibility: hidden;
-  z-index: 100000;
   opacity: 0;
   -moz-transition: all .3s;
   -webkit-transition: opacity .3s;
@@ -111,5 +110,5 @@ button.cancel {
 }
 
 .queue{
-  display:none;
+	display:none;
 }

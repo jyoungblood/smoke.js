@@ -1,11 +1,16 @@
 var smoke = {
   smoketimeout: [],
   init: false,
+  zindex: 1000,
+  i: 0,
 
 	bodyload: function(id){
 		var ff = document.createElement('div');
 				ff.setAttribute('id','smoke-out-'+id);
-				ff.setAttribute('class','smoke-base');
+/* 				ff.setAttribute('class','smoke-base'); */
+				ff.className = 'smoke-base';
+				ff.style.zIndex = smoke.zindex;
+				smoke.zindex++;
 				document.body.appendChild(ff);
 	},
 
@@ -28,6 +33,10 @@ var smoke = {
 	forceload: function(){},
 
 	build: function(e,f){
+		smoke.i++;
+		
+		// determine stacking order
+		f.stack = smoke.i;
 
 		e = e.replace(/\n/g,'<br />');
 		e = e.replace(/\r/g,'<br />');
@@ -104,8 +113,12 @@ var smoke = {
 	finishbuild: function(e,f,box){
 	
 		var ff = document.getElementById('smoke-out-'+f.newid+'');
-				ff.innerHTML = box;
 				ff.className = 'smoke-base smoke-visible';		
+				ff.innerHTML = box;
+				
+		while (ff.innerHTML == ""){
+			ff.innerHTML = box;
+		}
 		
 		// clear the timeout if it's already been activated
 		if (smoke.smoketimeout[f.newid]){
@@ -225,7 +238,8 @@ var smoke = {
 		
 	destroy: function(type,id){
 		var box = document.getElementById('smoke-out-'+id);
-				box.setAttribute('class','smoke-base');
+/* 				box.setAttribute('class','smoke-base'); */
+				box.className = 'smoke-base';
 
 			
 			// confirm/alert/prompt remove click listener
@@ -238,6 +252,9 @@ var smoke = {
 			if (h = document.getElementById(type+'-cancel-'+id)){
 				smoke.stoplistening(h,"click",function(){});
 			}
+			
+			smoke.i = 0;
+			box.innerHTML = '';
 
 	},
 
@@ -281,17 +298,23 @@ var smoke = {
 	listen: function(e,f,g){
 	
     if (e.addEventListener) {
-        e.addEventListener(f, g, false);
-    } else {
-        e.attachEvent('on'+f, g);
+      e.addEventListener(f, g, false);
+    } else if (e.attachEvent){
+      var r = e.attachEvent('on'+f, g);
+      return r;
+    }else{
+    	return false;
     }
 	},
 	
 	stoplistening: function(e,f,g){	
     if (e.removeEventListener) {
-        e.removeEventListener("click", g, false);
-    } else {
-        e.detachEvent('on'+f, g);
+      e.removeEventListener("click", g, false);
+    } else if (e.detachEvent){
+      var r = e.detachEvent('on'+f, g);
+      return r;
+    }else{
+    	return false;
     }
 	}
 };

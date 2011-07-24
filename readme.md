@@ -12,10 +12,16 @@ Supported Browsers
 - Chrome
 - Firefox
 - Safari
-- IE 6+ (usable [except for confirm() callbacks in 7/8], also no animation...whatevs. aaand it's up to you if you want to support background transparency in ie6/7)
+- IE 8+ (usable, no animation [whatevs])
 - iOS Mobile Safari
 
 (widespread mobile support [android, blackberry, windows] uncertain)
+
+
+Halfway Supported Browsers
+--------------------------
+- IE 6/7 [almost working...whatevs]
+
 
 
 
@@ -39,10 +45,10 @@ Thanks!
 --------
 IE support, loading on demand, and other cool improvements facilitated by these dudes:
 
--Hugo Diaz
--Michal Zielenkiewicz
--Leon Fedotov
--Lautaro Orazi
+- Hugo Diaz
+- Michal Zielenkiewicz
+- Leon Fedotov
+- Lautaro Orazi
 
 
 
@@ -54,7 +60,6 @@ Current User Notices
 
 Planned Updates
 ---------------
+-IE 7 listeners not working or the script is stopping somewhere
 -Get webkit outbound transitions working properly again
--IE default theme background colors (no rgba in ie, derp)
--Confirm/prompt callbacks not working in ie7/8
 -Logic to support stacking alert/signal dialogs better

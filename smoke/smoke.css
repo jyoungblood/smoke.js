@@ -94,19 +94,22 @@
 .smoke {
   text-transform: uppercase;
   background-color: rgba(255,255,255,1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#ffffff);
 }
 
 .dialog-buttons button {
   border-radius: 5px;
   text-transform: uppercase;
   background-color: rgba(0,0,0,.9);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#222222,endColorstr=#222222);
   color: #fff;
 }
 
 button.cancel {
-  background-color: rgba(0,0,0,.7)
+  background-color: rgba(0,0,0,.7);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#444444,endColorstr=#444444);
 }
 
 .queue{
-	display:none;
+  display:none;
 }

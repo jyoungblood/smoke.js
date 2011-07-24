@@ -61,4 +61,5 @@ Current User Notices
 Planned Updates
 ---------------
 -Logic to support stacking alert (and possibly signal) dialogs better (show in the right order, one at a time)
+	-errors in ie 7-8 :(
 -Get webkit outbound transitions working properly again

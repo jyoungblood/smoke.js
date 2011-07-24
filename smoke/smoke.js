@@ -1,56 +1,83 @@
-var smoketimeout;
 var smoke = {
+  smoketimeout: [],
+  init: false,
 
-	pageload: function(){
-    window.addEventListener('load', function(){
-    	smoke.bodyload();
-    }, false);
+	bodyload: function(id){
+		var ff = document.createElement('div');
+				ff.setAttribute('id','smoke-out-'+id);
+				ff.setAttribute('class','smoke-base');
+				document.body.appendChild(ff);
 	},
-	
-	bodyload: function(){
-		if (!document.getElementById('smoke-out')){
-			var ff = document.createElement('div');
-					ff.setAttribute('id','smoke-out');
-					ff.setAttribute('class','smoke-base');
-					document.body.appendChild(ff);
+
+	newdialog: function(){
+		var newid = new Date().getTime();
+				newid = Math.random(1,99) + newid;	
+
+		// make a new container while you're at it
+		if (!smoke.init){		
+	    smoke.listen(window,"load", function(){
+		    smoke.bodyload(newid);
+			});
+		}else{
+	    smoke.bodyload(newid);		
 		}
+
+		return newid;
 	},
-	
-	forceload: function(){
-  	smoke.bodyload();
-	},
+
+	forceload: function(){},
 
 	build: function(e,f){
+
 		e = e.replace(/\n/g,'<br />');
 		e = e.replace(/\r/g,'<br />');
+
 		var prompt = '';
+
 		if (f.type == 'prompt'){
 			prompt = 
 				'<div class="dialog-prompt">'+
-						'<input id="dialog-input" type="text" />'+
+						'<input id="dialog-input-'+f.newid+'" type="text" />'+
 					'</div>';
 		}
+
 		
+		var ok = 'OK';
+		var cancel = 'Cancel';
+		var classname = '';
+		
+		if (f.params.ok){
+			ok = f.params.ok;
+		}
+		
+		if (f.params.cancel){
+			cancel = f.params.cancel;
+		}
+		
+		if (f.params.classname){
+			classname = f.params.classname;
+		}
+
+
 		var buttons = '';
 		if (f.type != 'signal'){
 			buttons = '<div class="dialog-buttons">';
 			if (f.type == 'alert'){
 				buttons +=
-					'<button id="alert-ok">OK</button>';
+					'<button id="alert-ok-'+f.newid+'">'+ok+'</button>';
 			}
-			
 			if (f.type == 'prompt' || f.type == 'confirm'){
 				buttons +=
-					'<button id="'+f.type+'-cancel" class="cancel">Cancel</button>'+
-					'<button id="'+f.type+'-ok">OK</button>';
+					'<button id="'+f.type+'-cancel-'+f.newid+'" class="cancel">'+cancel+'</button>'+
+					'<button id="'+f.type+'-ok-'+f.newid+'">'+ok+'</button>';
 			}
-			
 			buttons += '</div>';
 		}
 
+
 		var box = 
-		'<div id="smoke-bg"></div>'+
-		'<div class="dialog smoke">'+
+		'<div id="smoke-bg-'+f.newid+'" class="smokebg"></div>'+
+		'<div class="dialog smoke '+classname+'">'+
 			'<div class="dialog-inner">'+
 					e+
 					prompt+
@@ -58,167 +85,219 @@ var smoke = {
 			'</div>'+
 		'</div>';
 
-		var ff = document.getElementById('smoke-out');
-				ff.innerHTML = box;
-				ff.className = 'smoke-base smoke-visible';
+	
 
+
+
+		if (!smoke.init){		
+	    smoke.listen(window,"load", function(){
+	    	smoke.finishbuild(e,f,box);
+			});
+		}else{
+	    	smoke.finishbuild(e,f,box);
+		}
+
+	},
+
+
+
+	finishbuild: function(e,f,box){
+	
+		var ff = document.getElementById('smoke-out-'+f.newid+'');
+				ff.innerHTML = box;
+				ff.className = 'smoke-base smoke-visible';		
+		
 		// clear the timeout if it's already been activated
-		if (smoketimeout){
-				clearTimeout(smoketimeout);
+		if (smoke.smoketimeout[f.newid]){
+				clearTimeout(smoke.smoketimeout[f.newid]);
 		}
 		
 		// close on background click
-		var g = document.getElementById('smoke-bg');
-				g.addEventListener("click",function(){
-					smoke.destroy(f.type);
+		// buberdds got rid of this for ie support?
+		var g = document.getElementById('smoke-bg-'+f.newid+'');
+	      smoke.listen(g,"click", function(){
+					smoke.destroy(f.type, f.newid);
 					if (f.type == 'prompt' || f.type == 'confirm'){
 						f.callback(false);
 					}
-				}, false);
-
-
-
-
-
+				});
+	
+	
 		// listeners for button actions
-
+	
 		if (f.type == 'alert'){
 			// return true
-			var h = document.getElementById('alert-ok');
-					h.addEventListener("click",function(){
-						smoke.destroy(f.type);
-					}, false);
-
+			var h = document.getElementById('alert-ok-'+f.newid+'');
+		      smoke.listen(h,"click", function(){
+						smoke.destroy(f.type, f.newid);
+					});
+	
+	
 			// listen for enter key or space, close it
 			document.onkeyup = function(e){
-				if (e.keyCode == 13 || e.keyCode == 32){
-					smoke.destroy(f.type);
+	  		if (!e) e = window.event;
+				if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 27){
+					smoke.destroy(f.type, f.newid);
 				}
 			};
 		}
 		
 		if (f.type == 'confirm'){
 			// return false
-			var h = document.getElementById('confirm-cancel');
-					h.addEventListener("click",function(){
-								smoke.destroy(f.type);
-								f.callback(false);
-					}, false);
-			
+			var h = document.getElementById('confirm-cancel-'+f.newid+'');            
+		      smoke.listen(h,"click", function(){
+							smoke.destroy(f.type, f.newid);
+							f.callback(false);
+					});
+	
+	
 			
 			// return true
-			var i = document.getElementById('confirm-ok');
-					i.addEventListener("click",function(){
-								smoke.destroy(f.type);
-								f.callback(true);
-					}, false);
+			var i = document.getElementById('confirm-ok-'+f.newid+'');  
+		      smoke.listen(i,"click", function(){
+							smoke.destroy(f.type, f.newid);
+							f.callback(true);
+					});
 					
-			// listen for enter key or space, close it & return true
+			// listen for enter key or space, close it & return true, esc will close with false
 			document.onkeyup = function(e){
+	  		if (!e) e = window.event;
 				if (e.keyCode == 13 || e.keyCode == 32){
-					smoke.destroy(f.type);
+					smoke.destroy(f.type, f.newid);
 					f.callback(true);
+				} else if (e.keyCode == 27){
+					smoke.destroy(f.type, f.newid);
+					f.callback(false);
 				}
+	
 			};
-
+	
 		}
 		
 		if (f.type == 'prompt'){
 			// focus on input
-			var pi = document.getElementById('dialog-input');
+			var pi = document.getElementById('dialog-input-'+f.newid+'');
 				
 				setTimeout(function(){
 					pi.focus();
 					pi.select();
 				},100);
-
+	
 			// return false
-			var h = document.getElementById('prompt-cancel');
-					h.addEventListener("click",function(){
-								smoke.destroy(f.type);
-								f.callback(false);
-					}, false);
-
+			var h = document.getElementById('prompt-cancel-'+f.newid+'');
+		      smoke.listen(h,"click", function(){
+						smoke.destroy(f.type, f.newid);
+						f.callback(false);
+					});
+	
 			// return	contents of input box
-			var j = document.getElementById('dialog-input');
-			var i = document.getElementById('prompt-ok');
-					i.addEventListener("click",function(){
-								smoke.destroy(f.type);
-								f.callback(j.value);
-					}, false);
+			var j = document.getElementById('dialog-input-'+f.newid+'');
+			var i = document.getElementById('prompt-ok-'+f.newid+'');
+		      smoke.listen(i,"click", function(){
+							smoke.destroy(f.type, f.newid);
+							f.callback(j.value);
+					});
 					
 			// listen for enter
 			document.onkeyup = function(e){
+	  		if (!e) e = window.event;
 				if (e.keyCode == 13){
-					smoke.destroy(f.type);
+					smoke.destroy(f.type, f.newid);
 					f.callback(j.value);
+				} else if (e.keyCode == 27){
+					smoke.destroy(f.type, f.newid);
+					f.callback(false);
 				}
 			};
 		}
-
-
-
+	
+	
 		// close after f.timeout ms
 		if (f.type == 'signal'){
-			smoketimeout = setTimeout(function(){
-				smoke.destroy(f.type);
+			smoke.smoketimeout[f.newid] = setTimeout(function(){
+				smoke.destroy(f.type, f.newid);
 			},f.timeout);
 		}
-		
+
 	},
 	
-	destroy: function(type){				
-		var box = document.getElementById('smoke-out');
+	
+		
+	destroy: function(type,id){
+		var box = document.getElementById('smoke-out-'+id);
 				box.setAttribute('class','smoke-base');
 
 			
 			// confirm/alert/prompt remove click listener
-			if (g = document.getElementById(type+'-ok')){
-				g.removeEventListener("click", function(){}, false);
-				
-				// remove keyup listener
+			if (g = document.getElementById(type+'-ok-'+id)){
+				smoke.stoplistening(g,"click",function(){});
 				document.onkeyup = null;
 			}
 			
 			// confirm/prompt remove click listener
-			if (h = document.getElementById(type+'-cancel')){
-
-				h.removeEventListener("click", function(){}, false);
+			if (h = document.getElementById(type+'-cancel-'+id)){
+				smoke.stoplistening(h,"click",function(){});
 			}
+
 	},
 
-	alert: function(e){
-		smoke.build(e,{type:'alert'});
+	alert: function(e,f){
+		if (typeof(f) != 'object'){
+			f = false;
+		}
+		
+		var id = smoke.newdialog();
+		smoke.build(e,{type:'alert',params:f,newid:id});
 	},
 	
 	signal: function(e,f){
 		if (typeof(f) == 'undefined'){
 			f = 5000;
 		}
-		smoke.build(e,{type:'signal',timeout:f});
+		
+		var id = smoke.newdialog();
+		smoke.build(e,{type:'signal',timeout:f,params:false,newid:id});
 	},
 	
-	confirm: function(e,f){
-		smoke.build(e,{type:'confirm',callback:f});
+	confirm: function(e,f,g){
+		if (typeof(g) != 'object'){
+			g = false;
+		}
+		
+		var id = smoke.newdialog();
+		smoke.build(e,{type:'confirm',callback:f,params:g,newid:id});
 		
 	},
 	
-	prompt: function(e,f){
-		return smoke.build(e,{type:'prompt',callback:f});
-	}
+	prompt: function(e,f,g){
+		if (typeof(g) != 'object'){
+			g = false;
+		}
+		
+		var id = smoke.newdialog();
+		return smoke.build(e,{type:'prompt',callback:f,params:g,newid:id});
+	},
 	
+	listen: function(e,f,g){
+	
+    if (e.addEventListener) {
+        e.addEventListener(f, g, false);
+    } else {
+        e.attachEvent('on'+f, g);
+    }
+	},
+	
+	stoplistening: function(e,f,g){	
+    if (e.removeEventListener) {
+        e.removeEventListener("click", g, false);
+    } else {
+        e.detachEvent('on'+f, g);
+    }
+	}
 };
 
-// and start this
-smoke.pageload();
-
-
-
-
-// future
-
-	// maybe ie (8-) support (event handlers, cat monocles)
-
-	// custom prefs
-		// custom true/false button text options
-
+		if (!smoke.init){		
+	    smoke.listen(window,"load", function(){
+		    smoke.init = true;
+			});
+		}

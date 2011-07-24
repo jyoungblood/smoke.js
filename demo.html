@@ -17,7 +17,6 @@
 
 
 	<script>
-	
 		$(function(){
 			$("#shortthemes a").click(function(e){
 				e.preventDefault();
@@ -47,7 +46,6 @@
 				}
 			});
 		}		
-
 
 	</script>
 
@@ -95,10 +93,28 @@
 });</pre>
 
 		
-		<p>Sometimes you just need to show something when the page loads. The necessary markup for this component, however, is injected into the DOM when it loads, so it's ready to execute on DOM ready. If you want to show an alert as soon as the DOM is ready, you can force smoke to render and show messages to your heart's content like so: </p>
 
-		<pre>smoke.forceload();
-smoke.signal('Welcome to the party');</pre>
+		<hr />
+
+		<p>Want to do custom button labels? Try this:</p>
+		
+		<pre>smoke.alert('this is cool', {ok:"yeah it is"});
+		
+smoke.confirm('this is still cool, yeah?',function(e){
+	if (e){
+		alert('OK pressed');
+	}else{
+		alert('CANCEL pressed');
+	}
+}, {ok:"yeah it is", cancel:"no way"});		
+		</pre>
+		
+		
+		
+		<p>Maybe you want to specify different styles for a specific alert. Just add a classname parameter like this:</p>
+		
+		<pre>smoke.alert('this is cool', {classname:"myclassname"});</pre>
+		
 
 		<hr />
 

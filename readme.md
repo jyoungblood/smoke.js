@@ -5,20 +5,18 @@ It's easy to implement and really easy to change the style.
 Take a look at the demo: [http://ssssnakes.com/smoke/](http://ssssnakes.com/smoke/).
 
 
+
+
 Supported Browsers
 ------------------
 - Chrome
 - Firefox
 - Safari
-- IE 9+ (usable, no animation)
+- IE 6+ (usable [except for confirm() callbacks in 7/8], also no animation...whatevs. aaand it's up to you if you want to support background transparency in ie6/7)
 - iOS Mobile Safari
 
-
-Currently Broken (but hopefully not for long)
----------------------------------------------
-- IE 7/8
-
 (widespread mobile support [android, blackberry, windows] uncertain)
+
 
 
 
@@ -34,3 +32,29 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+Thanks!
+--------
+IE support, loading on demand, and other cool improvements facilitated by these dudes:
+
+-Hugo Diaz
+-Michal Zielenkiewicz
+-Leon Fedotov
+-Lautaro Orazi
+
+
+
+Current User Notices
+---------------------
+-If any of your custom css depends on #smoke-out (like the original themes did), you'll need to change it to .smoke-base. Similarly, any #smoke-bg dependencies need to change to .smokebg.
+
+
+
+Planned Updates
+---------------
+-Get webkit outbound transitions working properly again
+-IE default theme background colors (no rgba in ie, derp)
+-Confirm/prompt callbacks not working in ie7/8
+-Logic to support stacking alert/signal dialogs better

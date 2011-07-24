@@ -2,13 +2,13 @@
 	background: none; 
 }
 
-#smoke-out .dialog {
+.smoke-base .dialog {
   top: 25%;
   left: 30%;
   width: 40%;
 }
 
-#smoke-out .dialog-inner { 
+.smoke-base .dialog-inner { 
 	padding: 10px;
 }
 

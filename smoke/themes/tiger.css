@@ -4,7 +4,7 @@
 	background: none; 
 }
 
-#smoke-out .dialog {
+.smoke-base .dialog {
 	top:auto;
 	left:auto;
 	right:0;
@@ -12,7 +12,7 @@
   width: auto;
 }
 
-#smoke-out .dialog-inner { 
+.smoke-base .dialog-inner { 
 	padding: 15px 20px;
 }
 

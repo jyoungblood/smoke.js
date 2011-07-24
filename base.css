@@ -26,6 +26,8 @@ body{
 
 #demo{
 	margin-top:20px;
+	border-top:1px solid #ccc;
+	padding-top:20px;
 }
 
 #demo a{
@@ -36,7 +38,7 @@ body{
 	color:#888787;
 	
 	display:block;
-	margin:0 0 25px 15px;
+	margin:0 0 30px 15px;
 	
 	cursor:pointer;
 }

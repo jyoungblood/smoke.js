@@ -38,12 +38,13 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Thanks!
 --------
-IE support, loading on demand, and other cool improvements facilitated by these dudes:
+IE support, loading on demand, and other cool improvements facilitated by these happenin' dudes:
 
 - Hugo Diaz
 - Michal Zielenkiewicz
 - Leon Fedotov
 - Lautaro Orazi
+- cblage
 
 
 
@@ -59,3 +60,5 @@ Planned Updates
 	-errors in ie 7-8 :(
 	
 -Get webkit outbound transitions working properly again
+
+-Uniform callback implementation for everything (it's currently being done a little differently for prompt/confirm() and alert())

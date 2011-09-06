@@ -45,7 +45,7 @@
 				}else{
 					smoke.alert('no');
 				}
-			});
+			},{value:"skrillex"});
 		}		
 
 	</script>
@@ -95,6 +95,17 @@
 
 		
 
+
+		<p>And if you want the smoke.alert() to behave exactly like a native alert(), you can have subsequent actions happen in a callback like so:</p>
+		
+		<pre>smoke.alert('look at that alert, man.', {}, function(){
+	// oh what now?
+});</pre>
+
+
+	
+
+
 		<hr />
 
 		<p>Want to do custom button labels? Try this:</p>
@@ -110,6 +121,22 @@ smoke.confirm('this is still cool, yeah?',function(e){
 }, {ok:"yeah it is", cancel:"no way"});		
 		</pre>
 		
+
+		
+
+
+		<p>Need a default value for a prompt? Prepare to be amazed:</p>
+		
+		<pre>smoke.prompt('what\'s for dinner? (omg please say pizza, please say pizza)',function(e){
+	if (e){
+		smoke.alert(e);
+	}else{
+		smoke.alert('no');
+	}
+},{value:"pizza"});		
+		</pre>
+		
+
 		
 		
 		<p>Maybe you want to specify different styles for a specific alert. Just add a classname parameter like this:</p>

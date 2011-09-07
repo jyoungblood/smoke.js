@@ -44,6 +44,7 @@ IE support, loading on demand, and other cool improvements facilitated by these 
 - Michal Zielenkiewicz
 - Leon Fedotov
 - Lautaro Orazi
+- Leonardo Souza
 - cblage
 
 

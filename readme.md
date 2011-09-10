@@ -45,7 +45,7 @@ IE support, loading on demand, and other cool improvements facilitated by these 
 - Leon Fedotov
 - Lautaro Orazi
 - Leonardo Souza
-- cblage
+- Carlos Brito Lage
 
 
 

@@ -12,10 +12,10 @@ Supported Browsers
 - Chrome
 - Firefox
 - Safari
-- IE 6+ (usable, no animation [whatevs], visual IE6 support [transparencies, etc] is up to you)
+- IE 6+ (usable, no animation [who cares], visual IE6 support [transparencies, etc] is up to you)
 - iOS Mobile Safari
 
-(widespread mobile support [android, blackberry, windows] uncertain)
+(widespread mobile support [android, blackberry, windows] uncertain...whatevs)
 
 
 
@@ -38,7 +38,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Thanks!
 --------
-IE support, loading on demand, and other cool improvements facilitated by these happenin' dudes:
+IE support, JSLint compliance, loading on demand, and other cool improvements facilitated by these dudes:
 
 - Hugo Diaz
 - Michal Zielenkiewicz
@@ -57,7 +57,7 @@ Current User Notices
 
 Planned Updates
 ---------------
--Close dialog when "esc" is pressed
+-Close dialog when "esc" is pressed (i think it's working on everything but .signal())
 
 -Logic to support stacking alert (and possibly signal) dialogs better (show in the right order, one at a time)
 	-errors in ie 7-8 :(

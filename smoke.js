@@ -1,5 +1,5 @@
 /*
-	SMOKE.JS - 0.1.2
+	SMOKE.JS - 0.1.3
 	(c) 2011-2013 Jonathan Youngblood
 	demos / documentation: http://smoke-js.com/ 
 */
@@ -354,11 +354,17 @@
 				}
 				if (e.keyCode === 27) {
 					smoke.destroy(f.type, f.newid);
+					if (typeof f.callback !== 'undefined') {
+						f.callback();
+					}
 				}
 			};	
 	
 			smoke.smoketimeout[f.newid] = setTimeout(function () {
 				smoke.destroy(f.type, f.newid);
+				if (typeof f.callback !== 'undefined') {
+					f.callback();
+				}
 			}, f.timeout);
 		},
 		
@@ -404,21 +410,22 @@
 			
 			smoke.build(e, {
 				type:     'alert',
-				callback: g,
-				params:   f,
+				callback: f,
+				params:   g,
 				newid:    id
 			});
 		},
 		
-		signal: function (e, f) {
-			if (typeof f === 'undefined') {
-				f = 5000;
+		signal: function (e, g) {
+			if (typeof g === 'undefined') {
+				g = 5000;
 			}
 			
 			var id = smoke.newdialog();
 			smoke.build(e, {
 				type:    'signal',
-				timeout: f,
+				callback: f,
+				timeout: g,
 				params:  false,
 				newid:   id
 			});

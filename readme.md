@@ -1,5 +1,5 @@
-SMOKE.JS - 0.1.2
-------------------
+SMOKE.JS - 0.1.3
+-----------------
 
 Notify or get approval from your users quickly and with style. This alert system uses css animations and background (so there are no images or js animation code...so it's really lightweight).
 
@@ -11,13 +11,14 @@ Also, we've made some cool themes for you: [http://github.com/jyoungblood/smoke-
 
 
 
-NEW IN 0.1.2
-------------------
+New in 0.1.2
+-------------
 - AMD module
 - new .quiz() method
 - updated (and v v smooth) default style
-- moved themes to their own repo
+- moved themes to [http://github.com/jyoungblood/smoke-themes/](their own repo)
 - cleaned up the repo so it's just the css/js files (all demos/docs: [http://smoke-js.com/](http://smoke-js.com/))
+- consistent callbacks/options order for .alert()
 
 
 
@@ -38,6 +39,7 @@ Supported Browsers
 Current User Notices
 ---------------------
 - If you're using custom themes, you might want to check yourself. The markup/structure hasn't changed, but the base styles are different from the way they've always been, so just think about that for a while.
+- .alert()'s callback/function order is changed to be consistent with the other methods. [http://smoke-js.com/](See the docs) for the correct order.
 
 
 Bugs/Contributing
@@ -49,8 +51,6 @@ Bugs/Contributing
 
 Planned Updates
 ---------------
-- Uniform callback implementation for everything (it's currently being done a little differently for .prompt/.confirm() and .alert())
-	- Callbacks might be handy for .signal(), too? This whole aspect could be a bit more elegant.
 - Stop all the click/esc/enter listeners once a dialog is closed.
 - Helpful code comments.
 - This thing used to pass JSLint, but it doesn't now. Whatever...
@@ -58,8 +58,8 @@ Planned Updates
 
 
 
-Thanks, dudes!
---------------
+Thanks Dudes
+------------
 - Hugo Diaz
 - Michal Zielenkiewicz
 - Leon Fedotov

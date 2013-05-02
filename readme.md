@@ -11,7 +11,7 @@ Also, we've made some cool themes for you: [http://github.com/jyoungblood/smoke-
 
 
 
-New in 0.1.2
+New in 0.1.3
 -------------
 - AMD module
 - new .quiz() method

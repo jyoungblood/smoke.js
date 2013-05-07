@@ -416,7 +416,7 @@
 			});
 		},
 		
-		signal: function (e, g) {
+		signal: function (e, f, g) {
 			if (typeof g === 'undefined') {
 				g = 5000;
 			}

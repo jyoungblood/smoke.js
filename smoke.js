@@ -402,8 +402,8 @@
 		},
 	
 		alert: function (e, f, g) {
-			if (typeof f !== 'object') {
-				f = false;
+			if (typeof g !== 'object') {
+				g = false;
 			}
 			
 			var id = smoke.newdialog();

@@ -79,8 +79,9 @@
 
 .smoke-base .dialog {
   top: 25%;
-  left: 25%;
   width: 40%;
+  left: 50%;
+  margin-left: -20%;
 }
 
 .smoke-base .dialog-inner {

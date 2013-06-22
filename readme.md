@@ -7,7 +7,7 @@ It's trivial to implement and really easy to change the style.
 
 Take a look at the demo: [http://smoke-js.com/](http://smoke-js.com/)
 
-Also, we've made some cool themes for you: [http://github.com/jyoungblood/smoke-themes/](http://github.com/jyoungblood/smoke-themes/)
+Also, we've made some cool themes for you: [http://github.com/hxgf/smoke-themes/](http://github.com/hxgf/smoke-themes/)
 
 
 
@@ -16,7 +16,7 @@ New in 0.1.3
 - AMD module
 - new .quiz() method
 - updated (and v v smooth) default style
-- moved themes to [http://github.com/jyoungblood/smoke-themes/](their own repo)
+- moved themes to [http://github.com/hxgf/smoke-themes/](their own repo)
 - cleaned up the repo so it's just the css/js files (all demos/docs: [http://smoke-js.com/](http://smoke-js.com/))
 - consistent callbacks/options order for .alert()
 
@@ -45,7 +45,7 @@ Current User Notices
 Bugs/Contributing
 -----------------
 - If you find a bug or have a cool idea for a feature, fork this repo and add a pull request. Your changes will probably get added as long as they're legit.
-- If you've made any cool themes, add them to [http://github.com/jyoungblood/smoke-themes/](http://github.com/jyoungblood/smoke-themes/)
+- If you've made any cool themes, add them to [http://github.com/hxgf/smoke-themes/](http://github.com/hxgf/smoke-themes/)
 
 
 

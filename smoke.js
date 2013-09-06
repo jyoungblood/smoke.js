@@ -417,16 +417,21 @@
 		},
 		
 		signal: function (e, f, g) {
-			if (typeof g === 'undefined') {
-				g = 5000;
+			if (typeof g !== 'object') {
+				g = false;
+			}		
+
+			var duration = 5000;
+			if (g.duration !== 'undefined'){
+				duration = g.duration;
 			}
 			
 			var id = smoke.newdialog();
 			smoke.build(e, {
 				type:    'signal',
 				callback: f,
-				timeout: g,
-				params:  false,
+				timeout: duration,
+				params:  g,
 				newid:   id
 			});
 		},

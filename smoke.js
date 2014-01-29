@@ -4,7 +4,7 @@
 	demos / documentation: http://smoke-js.com/ 
 */
 
-;(function() {
+;(function(window, document) {
 
 	/*jslint browser: true, onevar: true, undef: true, nomen: false, eqeqeq: true, bitwise: true, regexp: true, newcap: true, immed: true */
 	
@@ -511,4 +511,4 @@
 		this.smoke = smoke;
 	}
 
-})();
+})(window, document);

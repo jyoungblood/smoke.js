@@ -505,7 +505,9 @@
 		module.exports = smoke;
 	}
 	else if (typeof define === 'function' && define.amd) {
-		define(smoke);
+		define('smoke', [], function() {
+		    return smoke;
+		});
 	}
 	else {
 		this.smoke = smoke;

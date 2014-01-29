@@ -487,7 +487,7 @@
 		
 		stoplistening: function (e, f, g) {	
 	    if (e.removeEventListener) {
-	      return e.removeEventListener("click", g, false);
+	      return e.removeEventListener(f, g, false);
 	    }
 	    
 	    if (e.detachEvent) {

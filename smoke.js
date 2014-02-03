@@ -249,6 +249,8 @@
 		},
 		
 		finishbuildQuiz: function (e, f, box) {
+			var a, b, c;
+			
 			smoke.listen(
 				document.getElementById('quiz-cancel-' + f.newid),
 				"click", 

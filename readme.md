@@ -58,7 +58,7 @@ Planned Updates
 
 
 
-Thanks Dudes
+Thanks Y'all
 ------------
 - Hugo Diaz
 - Michal Zielenkiewicz

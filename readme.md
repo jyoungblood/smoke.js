@@ -5,7 +5,7 @@ Notify or get approval from your users quickly and with style. This alert system
 
 It's trivial to implement and really easy to change the style. 
 
-Take a look at the demo: [http://smoke-js.com/](http://smoke-js.com/)
+Take a look at the demo: [http://smoke.js.org/](http://smoke.js.org/)
 
 Also, we've made some cool themes for you: [http://github.com/hxgf/smoke-themes/](http://github.com/hxgf/smoke-themes/)
 
@@ -17,7 +17,7 @@ New in 0.1.3
 - new .quiz() method
 - updated (and v v smooth) default style
 - moved themes to [http://github.com/hxgf/smoke-themes/](their own repo)
-- cleaned up the repo so it's just the css/js files (all demos/docs: [http://smoke-js.com/](http://smoke-js.com/))
+- cleaned up the repo so it's just the css/js files (all demos/docs: [http://smoke.js.org/](http://smoke.js.org/))
 - consistent callbacks/options order for .alert()
 
 
@@ -39,7 +39,7 @@ Supported Browsers
 Current User Notices
 ---------------------
 - If you're using custom themes, you might want to check yourself. The markup/structure hasn't changed, but the base styles are different from the way they've always been, so just think about that for a while.
-- .alert()'s callback/function order is changed to be consistent with the other methods. [http://smoke-js.com/](See the docs) for the correct order.
+- .alert()'s callback/function order is changed to be consistent with the other methods. [http://smoke.js.org/](See the docs) for the correct order.
 
 
 Bugs/Contributing
